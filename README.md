@@ -15,3 +15,7 @@ npm install -g firebase-tools
 ## 파이어베이스 URL
 
 https://vueclass10.web.app
+
+## 배포하기
+
+https://vueclass10.web.app/
