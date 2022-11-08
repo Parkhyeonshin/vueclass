@@ -5,26 +5,40 @@
             <div class="imgText__txt">
                 <span class="blind">이미지 텍스트 유형01</span>
                 <h3>
-                    당신의 향수에<br />
-                    만족하시나요?
+                    {{ ImgTexts[0].h3 }}
                 </h3>
-                <p>수 만개의 향수 중 당신의 향수를 찾는 것 <br />그것은 운명과도 같은 일입니다.</p>
+                <p>{{ ImgTexts[0].p }}</p>
                 <ul>
-                    <li><a href="#">당신만의 향수</a></li>
-                    <li><a href="#">무료로 시향하세요</a></li>
-                    <li><a href="#">당일 주문 / 당일 출고</a></li>
-                    <li><a href="#">당신만의 향수</a></li>
-                    <li><a href="#">무료로 시향하세요</a></li>
-                    <li><a href="#">당일 주문 / 당일 출고</a></li>
+                    <li>
+                        <a href="#">{{ ImgTexts[0].li }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ ImgTexts[0].li2 }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ ImgTexts[0].li3 }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ ImgTexts[0].li }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ ImgTexts[0].li2 }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ ImgTexts[0].li3 }}</a>
+                    </li>
                 </ul>
             </div>
             <div class="imgbox">
-                <div class="imgText__img img1">
+                <div class="imgText__img" :class="imgBox.divClass" v-for="imgBox in ImgBox" v-bind:key="imgBox.imgBox">
+                    <a href="#" :class="aClass">{{ imgBox.text }}</a>
+                </div>
+                <!-- <div class="imgText__img img1">
                     <a href="#">PERSONAL</a>
                 </div>
                 <div class="imgText__img img2">
                     <a href="#" class="blue">CUSTOM</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -35,6 +49,31 @@ export default {
     props: {
         attr: String,
         layout: String,
+    },
+    data: function () {
+        return {
+            ImgTexts: [
+                {
+                    h3: "당신의 향수에\n만족하시나요?",
+                    p: "수 만개의 향수 중 당신의 향수를 찾는 것\n그것은 운명과도 같은 일입니다.",
+                    li: "당신만의 향수",
+                    li2: "무료로 시향하세요",
+                    li3: "당일 주문 / 당일 출고",
+                },
+            ],
+            ImgBox: [
+                {
+                    divClass: "img1",
+                    aClass: "",
+                    text: "PERSONAL",
+                },
+                {
+                    divClass: "img2",
+                    aClass: "blue",
+                    text: "CUSTOM",
+                },
+            ],
+        };
     },
 };
 </script>

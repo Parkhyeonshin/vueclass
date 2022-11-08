@@ -16,7 +16,20 @@
                 :modules="modules"
                 class="mySwiper"
             >
-                <swiper-slide>
+                <swiper-slide v-for="slide in Slide" v-bind:key="slide.slide">
+                    <div className="desc">
+                        <span>{{ slide.span }}</span>
+                        <h3>{{ slide.h3 }}</h3>
+                        <p>
+                            {{ slide.p }}
+                        </p>
+                        <div className="btn">
+                            <a href="/">자세히 보기</a>
+                            <a href="/" :class="slide.aClass">제품 보기 </a>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <!-- <swiper-slide>
                     <div className="desc">
                         <span>NEW Product</span>
                         <h3>SPRING SEASON</h3>
@@ -60,7 +73,7 @@
                             <a href="/" className="black"> 제품 보기 </a>
                         </div>
                     </div>
-                </swiper-slide>
+                </swiper-slide> -->
             </swiper>
         </div>
     </section>
@@ -84,6 +97,30 @@ export default {
     setup() {
         return {
             modules: [Autoplay, Pagination, Navigation],
+        };
+    },
+    data: function () {
+        return {
+            Slide: [
+                {
+                    span: "NEW Product",
+                    h3: "SPRING SEASON",
+                    p: "따스한 햇살을 타고 부드러운 꽃 향이 다가오는 지금\n향기를 타고 봄이 다가온다",
+                    aClass: "black",
+                },
+                {
+                    span: "NEW Product",
+                    h3: "SPRING SEASON",
+                    p: "따스한 햇살을 타고 부드러운 꽃 향이 다가오는 지금\n향기를 타고 봄이 다가온다",
+                    aClass: "black",
+                },
+                {
+                    span: "NEW Product",
+                    h3: "SPRING SEASON",
+                    p: "따스한 햇살을 타고 부드러운 꽃 향이 다가오는 지금\n향기를 타고 봄이 다가온다",
+                    aClass: "black",
+                },
+            ],
         };
     },
 };

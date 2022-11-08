@@ -1,17 +1,16 @@
 <template>
     <section id="cardType" class="card__wrap" :class="attr">
-        <h2>선인장에서 추출한 이국적 향</h2>
-        <p>지중해 연안을 상징하는 선인장 열매인 프리클리 페어를 메인으로 시작되는 BSET EDITION</p>
+        <h2>{{ CardTypes[0].h2 }}</h2>
+        <p>{{ CardTypes[0].p }}</p>
         <div class="card__inner" :class="layout">
-            <article class="card">
+            <article class="card" v-for="card in Cards" v-bind:key="card.cardInner">
                 <figure class="card__header">
-                    <img src="../../assets/img/card_bg01_01_1.jpg" alt="외형에 대한 오해 이미지" />
+                    <img :src="card.img" alt="외형에 대한 오해 이미지" />
                 </figure>
                 <div class="card__body">
-                    <h3 class="tit">Cactus</h3>
+                    <h3 class="tit">{{ card.tit }}</h3>
                     <p class="desc">
-                        오가닉 버베나와 선인장 추출물이 조화를 이루는 향으로 여름 갈증을 해소하는 이국적이고 상쾌한 기운을 느낄 수 있습니다.
-                        <br />여름과 어울리는 밝고 신선한 향을 선사합니다.
+                        {{ card.desc }}
                     </p>
                     <a class="btn" href="#">
                         더 자세히 보기
@@ -26,7 +25,7 @@
                     </a>
                 </div>
             </article>
-            <article class="card">
+            <!-- <article class="card">
                 <figure class="card__header">
                     <img src="../../assets/img/card_bg01_02_1.jpg" alt="도베르만의 성격 이미지" />
                 </figure>
@@ -71,7 +70,7 @@
                         </span>
                     </a>
                 </div>
-            </article>
+            </article> -->
         </div>
     </section>
 </template>
@@ -80,6 +79,34 @@ export default {
     props: {
         attr: String,
         layout: String,
+    },
+
+    data: function () {
+        return {
+            CardTypes: [
+                {
+                    h2: "선인장에서 추출한 이국적 향",
+                    p: "지중해 연안을 상징하는 선인장 열매인 프리클리 페어를 메인으로 시작되는 BSET EDITION",
+                },
+            ],
+            Cards: [
+                {
+                    img: "../../assets/img/card_bg01_01_1.jpg",
+                    tit: "Cactus",
+                    desc: "오가닉 버베나와 선인장 추출물이 조화를 이루는 향으로 여름 갈증을 해소하는 이국적이고 상쾌한 기운을 느낄 수 있습니다.\n 여름과 어울리는 밝고 신선한 향을 선사합니다.",
+                },
+                {
+                    img: "../../assets/img/card_bg01_02_1.jpg",
+                    tit: "무더운 날씨에도 꽃피우는 향기",
+                    desc: "청량한 느낌이 낯설다면, 아마 이 향수가 없어서가 아닐까요?\n고객님들이 사랑해주신 이 향수 <br />당신과 어울리는 밝고 신선한 향을 선사해드립니다.",
+                },
+                {
+                    img: "../../assets/img/card_bg01_03_1.jpg",
+                    tit: "Very Royal Cactus",
+                    desc: "오가닉 버베나와 선인장 추출물이 조화를 이루는 향으로 여름 갈증을 해소하는 이국적이고 상쾌한 기운을 느낄 수 있습니다.\n여름과 어울리는 밝고 신선한 향을 선사합니다.",
+                },
+            ],
+        };
     },
 };
 </script>

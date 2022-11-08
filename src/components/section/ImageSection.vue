@@ -1,9 +1,16 @@
 <template>
     <section id="imgType" class="image__wrap" :class="attr">
-        <h2>화사한 봄꽃처럼</h2>
-        <p>햇살이 반기는 맑은 하늘과 포근한 공기, 그 사이로 스며든 기분 좋은 향조들.</p>
+        <h2>{{ Imgs[0].h2 }}</h2>
+        <p>{{ Imgs[0].p }}</p>
         <div class="image__inner image__box" :class="layout">
-            <article class="image img1">
+            <article class="image" :class="Imgtype.imgClass" v-for="Imgtype in ImgTypes" v-bind:key="Imgtype.ImgTypes">
+                <h3 class="image__title">{{ Imgtype.h3 }}</h3>
+                <p class="image__desc">
+                    {{ Imgtype.p }}
+                </p>
+                <a class="image__btn" :class="Imgtype.aClass" href="#" title="자세히 보기">자세히 보기</a>
+            </article>
+            <!-- <article class="image img1">
                 <h3 class="image__title">SPRING COOLTON</h3>
                 <p class="image__desc">
                     연분홍빛 꽃을 닮은 부드럽고 사랑스러운 향기.
@@ -18,7 +25,7 @@
                     <br />아이리스와 은방울꽃으로 시작해 센티폴리아 로즈, 우드 노트로 끝나는 향기를 느껴보세요.
                 </p>
                 <a class="image__btn yellow" href="#" title="자세히 보기">자세히 보기</a>
-            </article>
+            </article> -->
         </div>
     </section>
 </template>
@@ -28,6 +35,31 @@ export default {
     props: {
         attr: String,
         layout: String,
+    },
+
+    data: function () {
+        return {
+            Imgs: [
+                {
+                    h2: "화사한 봄꽃처럼",
+                    p: "햇살이 반기는 맑은 하늘과 포근한 공기, 그 사이로 스며든 기분 좋은 향조들.",
+                },
+            ],
+            ImgTypes: [
+                {
+                    imgClass: "img1",
+                    h3: "SPRING COOLTON",
+                    p: "연분홍빛 꽃을 닮은 부드럽고 사랑스러운 향기.\n로즈와 스위트 재스민삼박, 프리지어의 폭발적인 달콤함을 느낄 수 있습니다.",
+                    aClass: "",
+                },
+                {
+                    imgClass: "img2",
+                    h3: "FLOWER BOM",
+                    p: "생동감이 폭발하는 봄을 닮은 향수.\n아이리스와 은방울꽃으로 시작해 센티폴리아 로즈, 우드 노트로 끝나는 향기를 느껴보세요.",
+                    aClass: "yellow",
+                },
+            ],
+        };
     },
 };
 </script>

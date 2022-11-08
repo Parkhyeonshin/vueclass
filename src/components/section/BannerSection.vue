@@ -2,12 +2,12 @@
     <section id="bannerType" class="banner__wrap" :class="attr">
         <h2 class="blind">배너 영역</h2>
         <div class="banner__inner">
-            <h3 class="title">Daily Perfume</h3>
+            <h3 class="title">{{ banners[0].h3 }}</h3>
             <p class="desc">
-                따스한 일요일 아침 화이트 셔츠의 두근거리는 설렘
-                <a href="#" title="새로운 페이지 열림" target="_blank">sshin4882.tistory.com</a>
+                {{ banners[0].p }}
+                <a href="#" title="새로운 페이지 열림" target="_blank">{{ banners[0].mail }}</a>
             </p>
-            <span class="small">SSHINY PERFUME</span>
+            <span class="small">{{ banners[0].span }}</span>
         </div>
     </section>
 </template>
@@ -15,6 +15,19 @@
 export default {
     props: {
         attr: String,
+    },
+
+    data: function () {
+        return {
+            banners: [
+                {
+                    h3: "Daily Perfume",
+                    p: "따스한 일요일 아침 화이트 셔츠의 두근거리는 설렘",
+                    mail: "sshin4882.tistory.com",
+                    span: "SSHINY PERFUME",
+                },
+            ],
+        };
     },
 };
 </script>
